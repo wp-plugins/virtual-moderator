@@ -10,7 +10,7 @@ This plugin helps to keep community blogs clean. There must be some unwanted pos
 
 == Description ==
 
-Time for moderators and blog monitors to take rest. Let the visitor choose what they want to see in the blog. Visitor can flag unsuitable posts. After a number of posts the post status will be changed to anything you want. You can change the post status to Draft, Pending Moderation, Moderated(custom status) or send the post to trash, remove it permanently. You can also set it to do nothing if you plan something else. You can have a notification if the post is flagged number of times you will have set.
+Time for moderators and blog monitors to take rest. Let the visitor choose what they want to see in the blog. Visitor can flag unsuitable posts. After a number of flags the post status will be changed to anything you want. You can change the post status to Draft, Pending Moderation, Moderated(custom status) or send the post to trash, remove it permanently. You can also set it to do nothing if you plan something else. You can have a notification if the post is flagged number of times you will have set.
 
 You can exclude some categories and mark some users as safe to remove the flag option from there posts.
 
