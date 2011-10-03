@@ -1,6 +1,6 @@
 === Virtual Moderator ===
 Contributors: adnan007 
-Donate link:https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=l6nWU-Ante5UMDrL
+Donate link:http://bit.ly/donate-vm
 Tags: moderation, moderate, community, flag, post flag,
 Requires at least: 3.0
 Tested up to: 3.2.1
