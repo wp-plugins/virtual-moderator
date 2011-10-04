@@ -36,6 +36,7 @@ case "moderation":
 	break;
 };
 			update_option('vms', $vms);};
+			
 			if($_POST['remove-flag-data']){
 				$table=$wpdb->prefix."vmdata";
 				$wpdb->query("DROP TABLE IF EXISTS $table");
@@ -45,11 +46,13 @@ case "moderation":
 				");
 			};
 			if($_POST['remove-vms'])delete_option('vms');
+			
 			if($_POST['uninstall']){
-$plugin=str_replace(basename(__FILE__), '', plugin_basename(__FILE__)).'vmoderator.php';
-				deactivate_plugins($plugin);
-				update_option('recently_activated', array($plugin => time()) + (array)get_option('recently_activated'));
-				header('Location: '.get_bloginfo('url').'/wp-admin/plugins.php?deactivate=true&plugin_status=all');};
+			$deactivate_url = 'plugins.php?action=deactivate&amp;plugin='.plugin_basename(dirname(__FILE__)).'/vmoderator.php';
+			if(function_exists('wp_nonce_url')) { 
+				$deactivate_url = wp_nonce_url($deactivate_url, 'deactivate-plugin_'.plugin_basename(dirname(__FILE__)).'/vmoderator.php');
+			}
+				};
 ?>
 <?php if($display!='documentation'){?>
 <form method="post" enctype="multipart/form-data">
@@ -203,6 +206,7 @@ You can use {flagged}, {to go} and {total} here too</small><br /><br />
 
 <?php } elseif ($display=='uninstallation'){?>
 <h1>Uninstall Virtual Moderator</h1>
+<?php if(!$_POST['uninstall']&&!$_POST['remove-flag-data']&&!$_POST['remove-vms']){?>
 <h3>This will deactivate the plugin</h3>
 <div class="vms-settings" id="vms-uninstallation">
 <ul style="list-style-type:none">
@@ -211,9 +215,12 @@ You can use {flagged}, {to go} and {total} here too</small><br /><br />
 <li><input type="checkbox" name="remove-vms" id="remove-vms" /><label for="remove-vms" >Remove <i>Virtual Moderator</i> settings</label></li></ul>
 <input type="hidden" name="
 uninstall" value="yes" />
-
 </div>
 <button type="submit" class="button-primary vms-save-settings">Uninstall</button>
+<?php }elseif($_POST['uninstall']){?>
+<p>Click finish to deactivate the plugin.
+<a class="button-primary vms-save-settings" href="<?php echo $deactivate_url;?>">Finish</a>
+<?php };?>
 <?php };?>
 </form>
 

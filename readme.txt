@@ -4,7 +4,7 @@ Donate link:http://bit.ly/donate-vm
 Tags: moderation, moderate, community, flag, post flag,
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: trunk
+Stable tag: 1.2.3
 
 This plugin helps to keep community blogs clean. There must be some unwanted posts if blog is open for anyone. It Lets visitors to flag those posts.
 
