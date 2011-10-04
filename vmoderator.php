@@ -3,7 +3,7 @@
 Plugin Name: Virtual Moderator
 Plugin URI: http://eadnan.com/vmoderator
 Description: A plugin for open community wordpress blogs. Moderators can now take rest and let visitors choose what they want to see. Dedicated to techtunes.
-Version: 1.2.3
+Version: 1.2.2
 Author: Mohaimenul Haque Adnan
 Author URI: http://eadnan.com
 License: GPL2
