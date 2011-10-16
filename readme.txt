@@ -40,3 +40,8 @@ Not yet
 3. Moderated status option page.
 
 4. Flag option intigrated.
+
+== Changelog ==
+1.2.3
+
+Setting option saving problem fixed.
