@@ -42,6 +42,5 @@ Not yet
 4. Flag option intigrated.
 
 == Changelog ==
-1.2.3
-
+               1.2.3
 Setting option saving problem fixed.
