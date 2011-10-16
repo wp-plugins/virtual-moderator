@@ -3,7 +3,7 @@
 Plugin Name: Virtual Moderator
 Plugin URI: http://eadnan.com/vmoderator
 Description: A plugin for open community wordpress blogs. Moderators can now take rest and let visitors choose what they want to see. Dedicated to techtunes.
-Version: 1.2.3
+Version: 1.3
 Author: Mohaimenul Haque Adnan
 Author URI: http://eadnan.com
 License: GPL2
@@ -181,12 +181,15 @@ $flags=get_post_meta($post->ID, '_flags', TRUE);
 		return $content;
 };
 
-function flag_arya(){ global $post, $vms, $user;//Figures out what to show in flag arya.
+function flag_arya(){ //Figures out what to show in flag arya.
+global $post, $vms, $user;
 			if(($vms['traceCookie']&&chk_duplicate($post->ID, 'id', $_COOKIE['flagged-post-'.$post->ID]))||($vms['traceIP']&&chk_duplicate($post->ID, 'ip', $ip))||($user!=0&&$vms['traceUser']&&chk_duplicate($post->ID, 'userID', $user))){return flagged();}else{return flag();};		
 };
 
 function vmoderator($classes=NULL) {//The function to display flag arya.
-	global $vms, $user, $post, $culevel, $ip;
+	global $vms, $user, $post, $ip;
+	if (is_user_logged_in()) {
+		$culevel = wp_get_current_user()->data->user_level;}else{$culevel = -1;};
 	if(is_array($classes)){
 		$classes=implode(' ', $classes);
 	};
@@ -200,7 +203,7 @@ if(get_post_meta($post->ID,'_flags')==0)$die=FALSE;
 	if(!$vms['flags2removePost']>0)$die=TRUE;
 	if($vms['canFlag']>$culevel)$die=TRUE;
 	if(!$die){return "<div id='flag-arya-".$post->ID."' class='".$classes." flag-arya flag-arya-".$post->ID."'>".flag_arya()."</div>";
-	}
+	};
 }//End function vmoderator
 
 function post_classes($classes){//Sets the post class considering flags
@@ -275,3 +278,17 @@ add_filter('post_class','post_classes');
 
 $vms=get_option('vms');
 global $vms;
+
+		$options = array(
+		'label'       => _x( 'Moderated', 'post' ),
+		'public'      => false,
+		'_builtin'    => true, /* internal use only. */
+		'label_count' => _n_noop( 'Moderated <span class="count">(%s)</span>', 'Moderated <span class="count">(%s)</span>' ),
+		'protected' => true,
+		'private' => true,
+		'show_in_admin_all' => true,
+		'publicly_queryable' => false,
+		'show_in_admin_status_list' => true,
+		'show_in_admin_all_list' => true
+	);
+	register_post_status( 'moderated', $options );

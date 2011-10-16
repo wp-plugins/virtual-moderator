@@ -40,3 +40,12 @@ Not yet
 3. Moderated status option page.
 
 4. Flag option intigrated.
+
+== Changelog ==
+                  1.3
+1. Fixed email to admin body text error.
+2. Fix of flag arya display problem.
+3. Fixed {title} and {excerpt} tags for admin.
+                  
+                  1.2.3
+Setting option saving problem fixed.
