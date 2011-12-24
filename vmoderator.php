@@ -3,7 +3,7 @@
 Plugin Name: Virtual Moderator
 Plugin URI: http://eadnan.com/vmoderator
 Description: A plugin for open community wordpress blogs. Moderators can now take rest and let visitors choose what they want to see. Dedicated to techtunes.
-Version: 1.3
+Version: 1.4
 Author: Mohaimenul Haque Adnan
 Author URI: http://eadnan.com
 License: GPL2
@@ -69,27 +69,23 @@ function vm_head(){global $vmpath, $vms;
 	};
 function content_filter($content){
 	global $vms;
-	if(is_single()){
 	if($vms['addContentTop']){
 		$content=vmoderator(array('flag-arya-content-top', 'flag-arya-top')).$content;
 	}
-	global $vms;
 	if($vms['addContentBottom']){
 		$content=$content.vmoderator(array('flag-arya-content-bottom', 'flag-arya-bottom'));
-	};};
+	};
 	return $content;};
 	
 function excerpt_filter($content){
-	global $vms;
+		global $vms;
 	if($vms['addExcerptTop']){
 		$content=vmoderator(array('flag-arya-excerpt-top', 'flag-arya-top')).$content;
 	}
-	global $vms;
 	if($vms['addExcerptBottom']){
 		$content=$content.vmoderator(array('flag-arya-excerpt-bottom', 'flag-arya-bottom'));
-	}
-	return $content;
 	};
+	return $content;};
 	
 	
 function chk_duplicate($pid, $type, $data){
@@ -189,7 +185,7 @@ global $post, $vms, $user;
 function vmoderator($classes=NULL) {//The function to display flag arya.
 	global $vms, $user, $post, $ip;
 	if (is_user_logged_in()) {
-		$culevel = wp_get_current_user()->data->user_level;}else{$culevel = -1;};
+		$culevel = get_userdata($user)->user_level;}else{$culevel = -1;};
 	if(is_array($classes)){
 		$classes=implode(' ', $classes);
 	};
@@ -210,8 +206,8 @@ function post_classes($classes){//Sets the post class considering flags
 	global $post;
 	$flags=get_post_meta($post->ID, '_flags', true);
 	if($flags=='')$flags="no-flag";
-	elseif($flags==1)$flags="1-flag";
-	else $flags=$flags."-flags";
+	elseif($flags==1)$flags="single-flag";
+	else $flags="flags-".$flags;
 	$classes[]=$flags;
 	return $classes;
 };
