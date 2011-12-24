@@ -9,12 +9,19 @@ $author=$post->post_author;
 
 function vm_notify(){
 	global $post, $vms;
+	$excerpt=$post->post_excerpt;
+	if(!$excerpt){
+	$words=explode(' ', wp_get_single_post($post->ID)->post_content);
+	if (count($words)>50){array_splice($words, 50);
+	$excerpt=implode(" ", $words);
+	$excerpt.="...";}else{$excerpt=implode(" ", $words);};};
+	
 	if($vms['emailAdmin']){
 		$to=get_option('admin_email');
 		$subject="vModerator: a post is flagged by visitors";
 		$headers='From: "Virtual Moderator" <vmoderator@'.str_replace(array('http://','https://', 'www.'), '', get_option('siteurl')).'>';
 		$url=get_option('siteurl').'/wp-admin/post.php?action=edit&post='.$post->ID;
-		$message=str_replace(array('{title}', '{excerpt}', '{id}', '{url}'), array($post->post_name, $post->post_excerpt, $post->ID, $url), $vms['emailAuthorText']);
+		$message=str_replace(array('{title}', '{excerpt}', '{id}', '{url}'), array($post->post_title, $excerpt, $post->ID, $url), $vms['emailAdminText']);
 		wp_mail( $to, $subject, $message, $headers );
 	};
 	
@@ -23,14 +30,14 @@ function vm_notify(){
 		$subject="Your post at ".get_bloginfo( 'name' )." is flagged by visitors";
 		$headers='From: "'.get_bloginfo( 'name' ).'" <vmoderator@'.str_replace(array('http://','https://', 'www.'), '', get_option('siteurl')).'>';
 		$url=get_option('siteurl').'/wp-admin/post.php?action=edit&post='.$post->ID;
-		$message=str_replace(array('{title}', '{excerpt}', '{id}', '{url}'), array($post->post_name, $post->post_excerpt, $post->ID, $url), $vms['emailAuthorText']);
+		$message=str_replace(array('{title}', '{excerpt}', '{id}', '{url}'), array($post->post_title, $excerpt, $post->ID, $url), $vms['emailAuthorText']);
 		wp_mail( $to, $subject, $message, $headers );
 	};
 }
 if(get_post_type($v['post_id'])!='post')$die=TRUE;
 if($vms['flags2removePost']==0)$die=TRUE;
 if($culevel<$vms['canFlag'])$die=TRUE;
-if($user!=0&&$v['key']!=crc32(wp_get_current_user()->data->user_pass))$die=TRUE;
+if($user!=-1&&$v['key']!=crc32(wp_get_current_user()->data->user_pass))$die=TRUE;
 if($v['action']=='flag'){
 if($vms['noFlagAdmin']&&get_userdata($author)->user_level>7)$die=TRUE;
 if($vms['noFlagEditor']&&get_userdata($author)->user_level>2&&get_userdata($author)->user_level<8)$die=TRUE;

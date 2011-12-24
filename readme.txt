@@ -3,8 +3,8 @@ Contributors: adnan007
 Donate link:http://bit.ly/donate-vm
 Tags: moderation, moderate, community, flag, post flag,
 Requires at least: 3.0
-Tested up to: 3.2.1
-Stable tag: 1.2.3
+Tested up to: 3.3
+Stable tag: 1.3
 
 This plugin helps to keep community blogs clean. There must be some unwanted posts if blog is open for anyone. It Lets visitors to flag those posts.
 
@@ -30,8 +30,17 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 Now go to the *Virtual Moderator* settings on dashboard
 == Frequently Asked Questions ==
+=Who should use this plugin?=
+This plugin is useless for any personal blog with a single writter. This is usefull for article directory and community blogs where there are multiple writters. It is life saver for blogs with open permission to write.
 
-Not yet
+=What is the purpose of using it?=
+If there are multiple writters, there must be some unsuitable posts. This plugin helps to keep the blog clean from such post. 
+
+=I have appointed moderator to monitor this blog for any unsuitable posts. Do I need to use this?=
+Moderators are good. You may don't need this. But it will definitely help the moderator.
+
+=How can I write to the author?=
+You can send suggestions, bug report and anything to vm@eadnan.com
 == Screenshots ==
 1. The settings option on dashboard. Only visible to administrator.
 
@@ -40,3 +49,16 @@ Not yet
 3. Moderated status option page.
 
 4. Flag option intigrated.
+
+== Changelog ==
+= 1.4 =
+* Fixed compatibility issue with WordPress 3.3
+* Fixed problems with post classes(See the documentation from plugin option for new post classes).
+
+= 1.3 =
+* Fixed email to admin body text error.
+* Fix of flag arya display problem.
+* Fixed {title} and {excerpt} tags for admin.
+                  
+= 1.2.3 =
+* Setting option saving problem fixed.
