@@ -30,16 +30,16 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 Now go to the *Virtual Moderator* settings on dashboard
 == Frequently Asked Questions ==
-=Who should use this plugin?=
+= Who should use this plugin? =
 This plugin is useless for any personal blog with a single writter. This is usefull for article directory and community blogs where there are multiple writters. It is life saver for blogs with open permission to write.
 
-=What is the purpose of using it?=
+= What is the purpose of using it? =
 If there are multiple writters, there must be some unsuitable posts. This plugin helps to keep the blog clean from such post. 
 
-=I have appointed moderator to monitor this blog for any unsuitable posts. Do I need to use this?=
+= I have appointed moderator to monitor this blog for any unsuitable posts. Do I need to use this? =
 Moderators are good. You may don't need this. But it will definitely help the moderator.
 
-=How can I write to the author?=
+= How can I write to the author? =
 You can send suggestions, bug report and anything to vm@eadnan.com
 == Screenshots ==
 1. The settings option on dashboard. Only visible to administrator.
@@ -52,7 +52,7 @@ You can send suggestions, bug report and anything to vm@eadnan.com
 
 == Changelog ==
 = 1.4 =
-* Fixed compatibility issue with WordPress 3.3
+* Fixed compatibility issue with WordPress 3.3.x
 * Fixed problems with post classes(See the documentation from plugin option for new post classes).
 
 = 1.3 =
