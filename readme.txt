@@ -52,7 +52,7 @@ You can send suggestions, bug report and anything to vm@eadnan.com
 
 == Changelog ==
 = 1.4 =
-* Fixed compatibility issue with WordPress 3.3
+* Fixed compatibility issue with WordPress 3.3.x
 * Fixed problems with post classes(See the documentation from plugin option for new post classes).
 
 = 1.3 =
