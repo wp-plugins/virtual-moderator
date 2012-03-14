@@ -1,5 +1,5 @@
 === Virtual Moderator ===
-Contributors: adnan007 
+Contributors: Adnan007 
 Donate link:http://bit.ly/donate-vm
 Tags: moderation, moderate, community, flag, post flag,
 Requires at least: 3.0
